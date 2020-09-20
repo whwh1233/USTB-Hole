@@ -18,8 +18,7 @@
                 <span class="box-header-icon">
                   <img src="~@/static/img/favorites.png" alt="">
                 </span>
-              </div>
-              
+              </div>  
             </div>
             <div class="box-content">
               {{message.content}}
@@ -28,6 +27,9 @@
         </div>
       </li>
     </ul>
+
+    <box @change-popup="doSomething"></box>
+
     <van-popup v-model="isShow" position="right" :style="{height:'100%',width:'60%',opacity:0.8}">
       <div class="popup">
         <div class="popup-title">
@@ -98,15 +100,14 @@
         </div>
       </div>
     </van-popup>
-
   </div>
 </template>
 
 <script>
-
+import Box from './box/Box'
 export default {
   components:{
-    
+    Box
   },
   data() {
     return {
@@ -141,9 +142,13 @@ export default {
   },
   methods:{
     showPopup(index) {
-      this.isShow = !this.isShow
+      this.isShow = true
       console.log(this.isShow)
       console.log(index + '被点击')
+    },
+    doSomething() {
+      this.isShow = !this.isShow
+      console.log(this.isShow)
     }
   }
 }
