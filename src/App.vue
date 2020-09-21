@@ -32,7 +32,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: url('./static/img/gbp.jpg') no-repeat 0 -200px;
-  background-size: 100%;
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
 }

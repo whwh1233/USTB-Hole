@@ -29,7 +29,6 @@ export default {
 
 <style scoped>
 .popup-comment-box {
-  
   width: 90%;
   margin: 20px auto;
   background-color: lightyellow;
