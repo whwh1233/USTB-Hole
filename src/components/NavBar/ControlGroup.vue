@@ -1,5 +1,6 @@
 <template>
   <div>
+    <van-sticky>
     <div class="control-group">
       <img-group>
         <template v-slot:img><img src="~@/static/img/refresh.png" alt=""></template>
@@ -23,6 +24,8 @@
         <template v-slot:img-text><span>发表</span></template>
       </img-group>
     </div>
+    </van-sticky>
+    
   </div>
 </template>
 <script>
@@ -51,6 +54,7 @@ export default {
 .control-group{
   display: flex;
   justify-content: center;
+  background-color: hsla(0,0%,100%,.8);
 
 }
 .control-search {

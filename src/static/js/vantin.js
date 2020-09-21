@@ -7,7 +7,9 @@ import { Divider } from 'vant';
 import { Icon as vantIcon} from 'vant';
 import { Field } from 'vant';
 import { Cell, CellGroup } from 'vant';
+import { Sticky } from 'vant';
 
+Vue.use(Sticky);
 Vue.use(Cell);
 Vue.use(CellGroup);
 Vue.use(Field);

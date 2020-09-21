@@ -1,6 +1,6 @@
 <template>
-  <div class="box">
-    <box-header :message="message"></box-header>
+  <div class="popup-comment-box">
+    <comment-header :message="message"></comment-header>
     <box-content :message="message"></box-content>
   </div>
 </template>
@@ -8,10 +8,12 @@
 <script>
 import BoxHeader from './comp/BoxHeader'
 import BoxContent from './comp/BoxContent'
+import CommentHeader from './comp/CommentHeader'
 export default {
   components:{
     BoxHeader,
-    BoxContent
+    BoxContent,
+    CommentHeader
   },
   methods:{
     change() {
@@ -26,11 +28,11 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  margin-top: 30px;
-  width: 33%;
-  margin-left: 50px;
-  background-color: #fff;
+.popup-comment-box {
+  
+  width: 90%;
+  margin: 20px auto;
+  background-color: lightyellow;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,.4);
   overflow: hidden;

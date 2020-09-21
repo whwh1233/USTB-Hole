@@ -1,17 +1,19 @@
 <template>
   <div>
     <div class="left-header">
-      <span class="box-id header-item"><a href="">#0000000</a></span>
+      <span class="box-id header-item"><a href="">#{{message.id}}</a></span>
       <span class="header-item">距离目前的时间</span>
-      <span class="header-item">具体发表日期</span>
-      <span class="header-item">具体发表时间</span>
+      <span class="header-item">{{message.time}}</span>
+      <span class="header-item">{{message.clock}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  
+  props:[
+    'message'
+  ]
 }
 </script>
 

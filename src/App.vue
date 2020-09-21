@@ -32,8 +32,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: url('./static/img/gbp.jpg') no-repeat 0 -200px;
-  height: 1047px;
-  background-repeat: no-repeat;
   background-size: 100%;
+  background-attachment: fixed;
+  background-position: center;
 }
 </style>

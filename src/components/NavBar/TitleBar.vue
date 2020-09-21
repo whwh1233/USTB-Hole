@@ -2,7 +2,7 @@
   <div>
     <div class="title-group">
       <van-divider
-        :style="{ color: 'black', borderColor: 'black', padding: '0 16px' ,fontSize: '28px',lineHeight: '28px'}">
+        :style="{ color: 'black', borderColor: 'black',fontSize: '28px',lineHeight: '28px',padding:0}">
           贝壳树洞  
       </van-divider>
     </div>
@@ -18,6 +18,8 @@ export default {
 <style scoped>
 .title-group {
   padding-top: 10px;
+  background-color: hsla(0,0%,100%,.8);
+  padding-bottom: 1px;
 }
 
 .title-group span {

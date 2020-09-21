@@ -1,41 +1,16 @@
 <template>
   <div>
     <ul>
-      <li v-for="(message,index) in messages " :key="index">
-        <div class="content-group">
-          <div class="box" @click="showPopup(index)">
-            <div class="box-header">
-              <div class="box-header-left">
-                <span class="box-id box-header-item"><a href="">#{{message.id}}</a></span>
-                <span class="box-header-item">距离目前的时间</span>
-                <span class="box-header-item">{{message.time}}</span>
-                <span class="box-header-item box-clock">{{message.clock}}</span>
-              </div>
-              <div class="box-header-icon-group">
-                <span class="box-header-icon">
-                  <img src="~@/static/img/comment.png" alt="">
-                </span>
-                <span class="box-header-icon">
-                  <img src="~@/static/img/favorites.png" alt="">
-                </span>
-              </div>  
-            </div>
-            <div class="box-content">
-              {{message.content}}
-            </div>
-          </div>
-        </div>
+      <li v-for="(message,index) in messages" :key="index">
+        <box @change-popup="doSomething" :message="message" @click.native="showDetail(index,message)"></box>
       </li>
     </ul>
-
-    <box @change-popup="doSomething"></box>
-
-    <van-popup v-model="isShow" position="right" :style="{height:'100%',width:'60%',opacity:0.8}">
+    
+    <van-popup v-model="isShow" position="right" :style="{height:'100%',width:'60%',opacity:0.8}" >
       <div class="popup">
         <div class="popup-title">
-          <van-icon name="close" class="popup-title-img" size="20" color="#0000CC"/>
           <span class="popup-title-id">
-            树洞 #3452644
+            树洞 #{{messages[currentIndex].id}}
           </span>
         </div>
         <div class="popup-item-group">
@@ -56,7 +31,8 @@
             <span>未关注</span>
           </div>
         </div>
-        <div class="popup-content-group">
+        <popup-box  :message="messages[currentIndex]"></popup-box>
+        <!-- <div class="popup-content-group">
           <div class="popup-content-header">
             <div class="popup-content-header-left">
               <span class="box-id box-header-item"><a href="">#12333</a></span>
@@ -78,16 +54,12 @@
               今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗 这下是不是就超过了可以的这是第三行
             </p>
           </div>
-        </div>
+        </div> -->
         <!-- comment显示 -->
         <div class="comment-group">
           <ul>
-            <li v-for="(item,index) in comments" :key="index">
-              <div class="comment-box">
-                <div class="comment-detail">
-                  {{item.comment}}
-                </div>
-              </div>
+            <li v-for="(item,index) in messages[currentIndex].comments" :key="index">
+              <popup-comment-box :message="item"></popup-comment-box>  
             </li>
           </ul>
         </div>
@@ -105,36 +77,111 @@
 
 <script>
 import Box from './box/Box'
+import PopupBox from './box/PopupBox'
+import PopupCommentBox from './box/PopupCommentBox'
 export default {
   components:{
-    Box
+    Box,
+    PopupBox,
+    PopupCommentBox
   },
   data() {
     return {
+      currentIndex:0,
       name:['Alice','Bob','Carol','Dave','Eve','Francis','Grace','Hans','Isabella','Jason','Kate','Louis','Margaret','Nathan',
       'Olivia','Paul','Richard','Susan','Thomas','Uma','Vivian','Winnie','Xander','Yasmine','Zach'],
       value: '',
       isShow:false,
-      comments:[
-            {comment:'确实确实确实确实确实',target:"none"},
-            {comment:'芜湖芜湖芜湖芜湖',target:"none"},
-            {comment:'yysyqsyysyqsyysyqs',target:"none"},
-            {comment:'yydsyydsyyds',target:"none"},
-            {comment:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',target:"none"}
-          ],
+      
       messages:[
         {
-          id:343434,content:'今天我是第一条树洞',time:'2020-9-16',clock:'09:27',
+          id:343434,content:'今天我是第一条树洞',time:'2020-9-16',clock:'09:27',favorites:3,commentnum:5,
           comments:[
-            {comment:'确实确实确实确实确实',target:"none"},
-            {comment:'芜湖芜湖芜湖芜湖',target:"none"},
-            {comment:'yysyqsyysyqsyysyqs',target:"none"},
-            {comment:'yydsyydsyyds',target:"none"}
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clock:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clock:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clock:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clock:'22:22',target:"none"}
           ]
         },{
-          id:343435,content:'今天我是第二条树洞',time:'2020-9-16',clock:'14:22'
+          id:343435,content:'今天我是第二条树洞',time:'2020-9-16',clock:'14:22',favorites:6,commentnum:5,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
         },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45'
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+          comments:[
+            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
+            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
+          ]
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
+        },{
+          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
+          favorites:10,commentnum:2,
         }
       ],
       
@@ -149,6 +196,11 @@ export default {
     doSomething() {
       this.isShow = !this.isShow
       console.log(this.isShow)
+    },
+    showDetail(index) {
+      console.log('展示该细节' + index),
+      this.currentIndex = index
+      this.isShow = true
     }
   }
 }
@@ -301,51 +353,6 @@ input:focus{
   overflow: hidden;
   display: inline;
 }
-.box {
-  margin-top: 30px;
-  width: 600px;
-  margin-left: 50px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.4);
-  overflow: hidden;
-}
-.box-header {
-  width: 100%;
-  font-size: 13px;
-  margin-top: 10px;
-  overflow: hidden;
-  position: relative;
-}
-.box-header-left{
-  float: left;
-  padding-left: 20px;
-}
-.box-id {
-  padding-left: 10px;
-}
-.box-id a {
-  color: blue;
-  text-decoration: none;
-}
-.box-header-item {
-  padding: 5px;
-}
-.box-header-icon-group{
-  float: right;
-  position: absolute;
-  right: 10px;
-}
-.box-header-icon img {
-  
-  padding: 0 5px;
-  width: 18px;
-  height: 18px;
-}
-.box-content {
-  text-align: left;
-  margin-left: 15px;
-  padding: 10px 0 ;
-  font-size: 15px;
-}
+
+
 </style>

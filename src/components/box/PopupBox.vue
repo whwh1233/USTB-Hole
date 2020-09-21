@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="popup-box">
     <box-header :message="message"></box-header>
     <box-content :message="message"></box-content>
   </div>
@@ -26,11 +26,11 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  margin-top: 30px;
-  width: 33%;
-  margin-left: 50px;
-  background-color: #fff;
+.popup-box {
+  
+  width: 90%;
+  margin: 20px auto;
+  background-color: lightyellow;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,.4);
   overflow: hidden;

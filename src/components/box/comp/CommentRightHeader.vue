@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="right-header">
-      <span class="header-icon"><span>{{message.favorites}}</span><img src="~@/static/img/comment.png" alt=""></span>
+    <div class="comment-right-header">
       <span class="header-icon"><span>{{message.commentnum}}</span><img src="~@/static/img/favorites.png" alt=""></span>
     </div>
   </div>
@@ -16,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-.right-header{
+.comment-right-header{
   width: fit-content;
   float:right;
   position: absolute;

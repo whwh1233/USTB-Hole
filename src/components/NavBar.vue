@@ -27,9 +27,6 @@ export default {
 </script>
 
 <style scoped>
-  #nav {
-  background-color: hsla(0,0%,100%,.8);
-}
 
 #nav a {
   font-weight: bold;
