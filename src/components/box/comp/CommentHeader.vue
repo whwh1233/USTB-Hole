@@ -24,8 +24,8 @@ export default {
 
 <style scoped>
 .box-header{
-  padding-top: 10px;
-  padding-left: 20px;
+  padding-top: 0.1rem;
+  padding-left: 0.2rem;
   display: flex;
   position: relative;
 }

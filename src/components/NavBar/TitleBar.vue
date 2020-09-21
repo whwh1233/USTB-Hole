@@ -2,7 +2,7 @@
   <div>
     <div class="title-group">
       <van-divider
-        :style="{ color: 'black', borderColor: 'black',fontSize: '28px',lineHeight: '28px',padding:0}">
+        :style="{ color: 'black', borderColor: 'black',fontSize: '0.3rem',lineHeight: '0.3rem',padding:0}">
           贝壳树洞  
       </van-divider>
     </div>
@@ -17,19 +17,10 @@ export default {
 
 <style scoped>
 .title-group {
-  padding-top: 10px;
+  padding-top: 0.1rem;
   background-color: hsla(0,0%,100%,.8);
-  padding-bottom: 1px;
+  padding-bottom: 0.01rem;
 }
 
-.title-group span {
-  font-size: 30px;
-  line-height: 30px;
-}
-
-.title-group van-divider {
-  font-size: 30px;
-  line-height: 30px;
-}
 
 </style>

@@ -21,20 +21,20 @@ export default {
 }
 .img-group a {
   display: flex;
-  height: 30px;
-  margin: 10px 5px;
+  height: 0.3rem;
+  margin: 0.1rem 0.05rem;
   text-decoration: none;
 }
 .img-group span {
   color: #2c3e50;
-  font-size: 18px;
-  height: 30px;
-  line-height: 30px;
+  font-size: 0.18rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
   display: block;
 }
 .img-group img{
-  width: 30px;
-  height: 30px;
+  width: 0.3rem;
+  height: 0.3rem;
 }
 
 </style>

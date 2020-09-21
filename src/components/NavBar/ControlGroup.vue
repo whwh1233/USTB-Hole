@@ -51,30 +51,39 @@ export default {
 
 
 <style scoped>
+input::-webkit-input-placeholder {
+    /* placeholder字体大小 */
+    font-size: 0.16rem;
+}
+
 .control-group{
   display: flex;
   justify-content: center;
   background-color: hsla(0,0%,100%,.8);
-
 }
 .control-search {
-    border-radius: 5px;
-    border: 1px solid #000;
+    border-radius: 0.05rem;
+    border: 0.01rem solid #000;
     outline: none;
-    min-width: 70%;
-    height: 30px;
-    margin: 10px;
+    min-width: 60%;
+    height: 0.3rem;
+    margin: 0.1rem;
+    vertical-align: middle;
+}
+.img-group{
+  vertical-align: middle;
 }
 .img-group span {
   color: #2c3e50;
-  font-size: 17px;
-  height: 30px;
-  line-height: 30px;
-  display: block;
+  font-size: 0.17rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  vertical-align: middle;
 }
 .img-group img{
-  width: 25px;
-  height: 25px;
-  margin: auto;
+  width: 0.25rem;
+  height: 0.25rem;
+  vertical-align: middle;
+
 }
 </style>

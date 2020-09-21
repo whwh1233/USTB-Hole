@@ -23,20 +23,20 @@ export default {
   right: 0;
 }
 .header-icon{
-  margin: 0 10px;
+  margin: 0 0.1rem;
   vertical-align: middle;
 
 }
 .header-icon span{
-  font-size: 13.5px;
+  font-size: 0.135rem;
   font-weight: 600;
   vertical-align: middle;
-  margin: 0 3px;
+  margin: 0 0.03rem;
 }
 .header-icon img{
-  height: 20px;
-  width: 20px;
+  height: 0.2rem;
+  width: 0.2rem;
   vertical-align: middle;
-  padding-bottom: 3px;
+  padding-bottom: 0.03rem;
 }
 </style>

@@ -2,7 +2,6 @@
   <div id="nav">
     <title-bar></title-bar>
     <control-group></control-group>
-    
   </div>
 </template>
 

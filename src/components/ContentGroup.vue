@@ -166,16 +166,16 @@ export default {
 
 <style scoped>
 .popup-title{
-  height: 50px;
+  height: 0.5rem;
   display: flex;
-  box-shadow: 0 3px 5px rgba(0,0,0,.2);
+  box-shadow: 0 0.03rem 0.05rem rgba(0,0,0,.2);
 }
 .popup-title span {
-  font-size: 25px;
-  line-height: 50px;
-  height: 50px;
+  font-size: 0.25rem;
+  line-height: 0.5rem;
+  height: 0.5rem;
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: 0.2rem;
 }
 
 

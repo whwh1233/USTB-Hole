@@ -17,6 +17,6 @@ export default {
 <style scoped>
 .box-content{
   text-align: left;
-  margin: 10px 10px 10px 20px;
+  margin: 0.1rem 0.1rem 0.1rem 0.2rem;
 }
 </style>

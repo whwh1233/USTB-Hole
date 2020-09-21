@@ -23,12 +23,12 @@ export default {
   float: left;
 }
 .left-header span {
-  font-size: 13.2px;
+  font-size: 0.132rem;
   
 }
 .header-item{
   flex: 1;
-  margin: 0 5px;
+  margin: 0 0.05rem;
 }
 .header-item a{
   color: blue;

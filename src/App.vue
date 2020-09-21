@@ -6,12 +6,11 @@
 </template>
 
 <script>
-import Home from './views/Home'
+
 import NavBar from '@/components/NavBar'
 import ContentGroup from '@/components/ContentGroup'
 export default {
   components:{
-    Home,
     ContentGroup,
     NavBar
   },
@@ -31,9 +30,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: url('./static/img/gbp.jpg') no-repeat 0 -200px;
+  background: url('./static/img/gbp.jpg') no-repeat 0 -2rem;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  font-size: 0.16rem;
 }
 </style>

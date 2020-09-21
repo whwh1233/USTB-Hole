@@ -27,12 +27,11 @@ export default {
 
 <style scoped>
 .popup-box {
-  
   width: 90%;
-  margin: 20px auto;
+  margin: 0.2rem auto;
   background-color: lightyellow;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.4);
+  border-radius: 0.05rem;
+  box-shadow: 0 0.02rem 0.05rem rgba(0,0,0,.4);
   overflow: hidden;
 }
 
