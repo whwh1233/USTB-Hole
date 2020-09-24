@@ -2,7 +2,10 @@
   <div id="app">
     <nav-bar></nav-bar>
     <content-group></content-group>
-    <button class="getinfo">点击获取数据库内容</button>
+    <button class="getinfo" @click="getinfo">点击获取数据库内容</button>
+    <div>
+      {{message}}
+    </div>
   </div>
 </template>
 
@@ -10,6 +13,7 @@
 
 import NavBar from '@/components/NavBar'
 import ContentGroup from '@/components/ContentGroup'
+import { request } from '@/network/request.js' 
 export default {
   components:{
     ContentGroup,
@@ -17,12 +21,19 @@ export default {
   },
   data () {
     return {
-      
+      message:'正在请求'
     }
   },
   methods:{
     getinfo() {
-
+      request({
+        url:'/api/user'
+      }).then(res => {
+        console.log(res)
+        this.message = res
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
   
