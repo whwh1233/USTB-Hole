@@ -104,43 +104,7 @@ export default {
             {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
             {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
           ]
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-          comments:[
-            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
-          ]
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-          comments:[
-            {content:'确实确实确实确实确实',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'芜湖芜湖芜湖芜湖',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'yysyqsyysyqsyysyqs',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"},
-            {content:'yydsyydsyyds',id:'34353637',time:'2020-9-10',clcok:'22:22',target:"none"}
-          ]
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        },{
-          id:343436,content:'今天我是第三条树洞，今天是做树洞的第二天 nice 如果我多写一些内容，看一看是不是会超过这个文本框，我去 还没有到第二行吗这下是不是就超过了可以的这是第三行再来一行 争取能够到第四行看看是什么效果',time:'2020-9-16' ,clock:'19:45',
-          favorites:10,commentnum:2,
-        }
+        },
       ],
       
     }

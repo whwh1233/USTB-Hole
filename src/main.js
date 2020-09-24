@@ -19,7 +19,9 @@ const setHtmlFontSize = () => {
   htmlDom.style.fontSize = `${htmlWidth / 7.5}px`;
 };
 window.onresize = setHtmlFontSize;
+
 setHtmlFontSize();
+
 const app = new Vue({
   router,
   store,

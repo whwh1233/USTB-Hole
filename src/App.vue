@@ -2,6 +2,7 @@
   <div id="app">
     <nav-bar></nav-bar>
     <content-group></content-group>
+    <button class="getinfo">点击获取数据库内容</button>
   </div>
 </template>
 
@@ -19,6 +20,11 @@ export default {
       
     }
   },
+  methods:{
+    getinfo() {
+
+    }
+  }
   
 }
 </script>
@@ -35,5 +41,7 @@ export default {
   background-attachment: fixed;
   background-position: center;
   font-size: 0.16rem;
+  min-height: 1090px;
 }
+
 </style>
