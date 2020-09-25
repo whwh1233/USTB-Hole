@@ -2,9 +2,15 @@
   <div id="app">
     <nav-bar></nav-bar>
     <content-group></content-group>
-    <button class="getinfo" @click="getinfo">点击获取数据库内容</button>
+    <button @click="getinfo">点击获取数据库内容</button>
+    <button @click="getContent">点击获取树洞内容</button>
+
     <div>
       {{message}}
+    </div>
+    <span>------------------------</span>
+    <div>
+      {{content}}
     </div>
   </div>
 </template>
@@ -14,6 +20,8 @@
 import NavBar from '@/components/NavBar'
 import ContentGroup from '@/components/ContentGroup'
 import { request } from '@/network/request.js' 
+import { user } from './network/getUser'
+import { content } from './network/getContent'
 export default {
   components:{
     ContentGroup,
@@ -21,19 +29,30 @@ export default {
   },
   data () {
     return {
-      message:'正在请求'
+      message:'正在请求',
+      content:'这里是树洞的内容'
     }
   },
   methods:{
     getinfo() {
       request({
-        url:'/api/user'
+        url:'apii/user'
       }).then(res => {
         console.log(res)
-        this.message = res
+        this.message = res.data.user
       }).catch(err => {
         console.log(err)
       })
+    },
+    getContent() {
+      request({
+        url:'apii/content'
+      }).then(res1 => {
+        this.content = res1.data.content,
+        console.log(res1)
+      }).catch(err1 => 
+        console.log(err1)
+      )
     }
   }
   
