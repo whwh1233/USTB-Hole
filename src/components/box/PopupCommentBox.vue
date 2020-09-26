@@ -1,25 +1,26 @@
 <template>
   <div class="popup-comment-box">
-    <comment-header :message="message"></comment-header>
-    <box-content :message="message"></box-content>
+    <reply-header :message="message" :index="index"></reply-header>
+    <reply-content :message="message"></reply-content>
   </div>
 </template>
 
 <script>
-import BoxHeader from './comp/BoxHeader'
-import BoxContent from './comp/BoxContent'
 import CommentHeader from './comp/CommentHeader'
+import ReplyHeader from './comp/ReplyHeader'
+import ReplyContent from './comp/ReplyContent'
 export default {
   components:{
-    BoxHeader,
-    BoxContent,
-    CommentHeader
+    CommentHeader,
+    ReplyHeader,
+    ReplyContent,
   },
   methods:{
    
   },
   props:[
-    'message'
+    'message',
+    'index'
   ]
 }
 </script>

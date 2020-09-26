@@ -11,7 +11,7 @@
         <template v-slot:img-text><span>关注</span></template>
       </img-group>
       <input type="text" placeholder="搜索 或 #PID " class="control-search">
-      <img-group v-if="!isLogin" @click="change">
+      <img-group v-if="!isLogin" @click.prevent="change">
         <template v-slot:img ><img src="~@/static/img/login.png" alt=""></template>
         <template v-slot:img-text><span>登录</span></template>
       </img-group>
@@ -41,9 +41,9 @@ export default {
   },
   methods:{
     change() {
-      this.isLogin = !this.isLogin
-      console.log(this.isLogin)
-      console.log('点击触发')
+      // this.isLogin = !this.isLogin
+      // console.log(this.isLogin)
+      // console.log('点击触发')
     }
   }
 }

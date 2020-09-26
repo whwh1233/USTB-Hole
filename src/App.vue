@@ -4,8 +4,7 @@
     <content-group></content-group>
     <button @click="getinfo">点击获取数据库内容</button>
     <button @click="getContent">点击获取树洞内容</button>
-    <button @click="getReply">点击获取树洞内容</button>
-
+    <button @click="getReply">点击获取评论内容</button>
     <div>
       {{message}}
     </div>

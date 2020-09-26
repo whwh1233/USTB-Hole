@@ -12,27 +12,9 @@ import moment from 'moment'
 Vue.filter('dateFormat', function (dateStr,pattern = "YYYY-MM-DD HH:mm:ss") {
   return moment(dateStr).format(pattern);
 })
-// request({
-//   url:'/home/multidata'
-// }).then(res => {
-//   console.log(res)
-// }).catch(err => {
-//   console.log(err)
-// })
 
-// const instance1 = axios.create({
-//   baseURL:'http://152.136.185.210:8000/api/z8/',
-//   timeout:5000
-// })
-// instance1({
-//   url:'/home/multidata',
-//   params:{
-//     type:'pop',
-//     page:1
-//   }
-// }).then(res => {
-//   // console.log(res)
-// })
+
+
 
 
 Vue.config.productionTip = false

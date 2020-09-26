@@ -10,13 +10,13 @@
         <popup-title></popup-title>
         <popup-icon></popup-icon>
         <popup-box></popup-box>
-        <!-- <div class="comment-group">
+        <div class="comment-group">
           <ul>
-            <li v-for="(item,index) in content[currentIndex].comment" :key="index">
-              <popup-comment-box :message="item"></popup-comment-box>  
+            <li v-for="(item,index) in $store.state.replyDetail" :key="index">
+              <popup-comment-box :message="item" :index="index"></popup-comment-box>  
             </li>
           </ul>
-        </div> -->
+        </div>
         <popup-input></popup-input>
       </div>
     </van-popup>
@@ -48,31 +48,32 @@ export default {
       }).then(res => {
         this.content = res.data,
         console.log(res.data)
-        this.content = res.data
       }).catch(err => 
         console.log(err)
       )
   },
   data() {
     return {
-      currentIndex:0,
-      name:['Alice','Bob','Carol','Dave','Eve','Francis','Grace','Hans','Isabella','Jason','Kate','Louis','Margaret','Nathan',
-      'Olivia','Paul','Richard','Susan','Thomas','Uma','Vivian','Winnie','Xander','Yasmine','Zach'],
       isShow:false,
       content:[],
-      messageDetail:{}
     }
   },
   methods:{
     showDetail(message) {
       console.log('展示' +  message.id + '细节'),
-      console.log(this.$store.state.currentID)
-      this.$store.state.currentID = message.id
-      console.log(this.$store.state.currentID)
       this.isShow = true,
-      this.messageDetail = message
       this.$store.state.messageDetail = message
-      console.log(this.$store.state.messageDetail)
+      console.log(this.$store.state.messageDetail),
+      console.log('访问' +  message.topic_id + '评论数据库')
+      const req_url = '/reply/' + message.topic_id
+      request({
+        url:req_url
+      }).then(res => {
+        console.log(res.data)
+        this.$store.state.replyDetail = res.data
+      }).catch(err =>
+        console.log(err)
+      )
     }
   }
 }
