@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    currentID:0,
+    messageDetail:{}
   },
   mutations: {
   },

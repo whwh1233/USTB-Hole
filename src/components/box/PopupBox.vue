@@ -1,27 +1,21 @@
 <template>
   <div class="popup-box">
-    <box-header :message="message"></box-header>
-    <box-content :message="message"></box-content>
+    <popup-box-header></popup-box-header>
+    <popup-box-content></popup-box-content>
   </div>
 </template>
 
 <script>
-import BoxHeader from './comp/BoxHeader'
-import BoxContent from './comp/BoxContent'
+import PopupBoxHeader from './comp/PopupBoxHeader'
+import PopupBoxContent from './comp/PopupBoxContent'
 export default {
   components:{
-    BoxHeader,
-    BoxContent
+    PopupBoxHeader,
+    PopupBoxContent
   },
   methods:{
-    change() {
-      console.log('box被点击')
-      this.$emit('change-popup')
-    }
   },
-  props:[
-    'message'
-  ]
+  
 }
 </script>
 

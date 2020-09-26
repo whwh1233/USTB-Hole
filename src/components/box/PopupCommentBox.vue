@@ -16,10 +16,7 @@ export default {
     CommentHeader
   },
   methods:{
-    change() {
-      console.log('box被点击')
-      this.$emit('change-popup')
-    }
+   
   },
   props:[
     'message'

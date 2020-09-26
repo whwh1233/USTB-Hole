@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="left-header">
-      <span class="box-id header-item"><a href="">#{{message.id}}</a></span>
+      <span class="box-id header-item"><a href="">#{{this.$store.state.messageDetail.id}}</a></span>
       <span class="header-item">距离目前的时间</span>
-      <span class="header-item">{{message.send_time| dateFormat}}</span>
+      <span class="header-item">{{this.$store.state.messageDetail.send_time| dateFormat}}</span>
     </div>
   </div>
 </template>

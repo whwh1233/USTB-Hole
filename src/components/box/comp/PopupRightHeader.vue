@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="right-header">
-      <span class="header-icon"><span>{{message.comments}}</span><img src="~@/static/img/comment.png" alt=""></span>
-      <span class="header-icon"><span>{{message.favorites}}</span><img src="~@/static/img/favorites.png" alt=""></span>
+      <span class="header-icon"><span>{{this.$store.state.messageDetail.comments}}</span><img src="~@/static/img/comment.png" alt=""></span>
+      <span class="header-icon"><span>{{this.$store.state.messageDetail.favorites}}</span><img src="~@/static/img/favorites.png" alt=""></span>
     </div>
   </div>
 </template>

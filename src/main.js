@@ -7,7 +7,11 @@ import store from './store'
 import './static/css/base.css'
 import './static/js/vantin'
 
+import moment from 'moment'
 
+Vue.filter('dateFormat', function (dateStr,pattern = "YYYY-MM-DD HH:mm:ss") {
+  return moment(dateStr).format(pattern);
+})
 // request({
 //   url:'/home/multidata'
 // }).then(res => {
