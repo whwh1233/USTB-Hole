@@ -8,6 +8,7 @@ export default new Vuex.Store({
     currentID:0,
     messageDetail:{},
     replyDetail:[],
+    isLogin:false,
     name:['Alice','Bob','Carol','Dave','Eve','Francis','Grace','Hans','Isabella','Jason','Kate','Louis','Margaret','Nathan',
       'Olivia','Paul','Richard','Susan','Thomas','Uma','Vivian','Winnie','Xander','Yasmine','Zach'],
   },

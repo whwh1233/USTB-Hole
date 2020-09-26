@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class="img-group">
-      <a href="">
-        <slot name="img"></slot>
-        <slot name="img-text"></slot>
-      </a>
+      <slot name="img"></slot>
+      <slot name="img-text"></slot>
     </div>
   </div>
 </template>
@@ -18,13 +16,12 @@ export default {
 <style scoped>
 .img-group {
   width: max-content;
-}
-.img-group a {
   display: flex;
   height: 0.3rem;
   margin: 0.1rem 0.05rem;
   text-decoration: none;
 }
+
 .img-group span {
   color: #2c3e50;
   font-size: 0.18rem;
