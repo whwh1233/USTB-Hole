@@ -9,7 +9,9 @@ import { Field } from 'vant';
 import { Cell, CellGroup } from 'vant';
 import { Sticky } from 'vant';
 import { Form } from 'vant';
+import { Toast  } from 'vant';
 
+Vue.use(Toast);
 Vue.use(Form);
 Vue.use(Sticky);
 Vue.use(Cell);
