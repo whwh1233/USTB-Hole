@@ -31,6 +31,8 @@ import PopupIcon from './box/PopupIcon'
 import PopupInput from './box/PopupInput'
 import PopupCommentBox from './box/PopupCommentBox'
 
+import { mapMutations } from 'vuex'
+
 import { request } from '@/network/request.js' 
 export default {
   components:{
@@ -51,6 +53,24 @@ export default {
       }).catch(err => 
         console.log(err)
       )
+  },
+  mounted() {
+    console.log('mounted成功')
+    let that = this
+    if(this.$store.state.token){
+      request({
+        url:'/autologin',
+        method:'post',
+        headers:{'token':sessionStorage.getItem("userToken")}
+      }).then(res => {
+        console.log(res.data)
+        this.$store.commit('autoTran',{userData:res.data})
+      }).catch(err => {
+        console.log(err)
+      })
+    }else{
+      this.showLogin = true
+    }
   },
   data() {
     return {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -8,14 +9,21 @@ export default new Vuex.Store({
     currentID:0,
     messageDetail:{},
     replyDetail:[],
-    isLogin:true,
     name:['Alice','Bob','Carol','Dave','Eve','Francis','Grace','Hans','Isabella','Jason','Kate','Louis','Margaret','Nathan',
       'Olivia','Paul','Richard','Susan','Thomas','Uma','Vivian','Winnie','Xander','Yasmine','Zach'],
+    currentUser:'',
+    isLogin:false,
+    token:sessionStorage.getItem('userToken')?sessionStorage.getItem('userToken'):""
   },
-  mutations: {
+  mutations:{
+    changeLogin(state,userToken) {
+      state.token = userToken.token
+    },
+    autoTran(state,userData) {
+      state.isLogin = true
+      state.currentUser = userData.userData.username
+      
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
+  
 })

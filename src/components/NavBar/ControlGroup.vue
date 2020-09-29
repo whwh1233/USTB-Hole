@@ -83,7 +83,7 @@
 import ImgGroup from './ImgGroup'
 
 import { request } from '@/network/request.js' 
-
+import { mapMutations } from 'vuex'
 export default {
   components:{
     ImgGroup,
@@ -98,6 +98,7 @@ export default {
     }
   },
   methods:{
+    ...mapMutations(['changeLogin','autoTran']),
     onPublish(values) {
       console.log(values)
       request({
@@ -123,32 +124,56 @@ export default {
       })
     },
     onLogin(values) {
+      let that = this
       console.log('submit', values);
       request({
         url:'/users',
-        methods:'GET',
+        method:'post',
         params:{
           username:values.username,
           password:values.password
-        }
+        },
+        headers:{'token':sessionStorage.getItem("userToken")}
       }).then(res => {
         console.log(res.data)
-        if(res.data === 'login success'){
+        if(res.data.message === 'login success'){
           this.showLogin = false
           this.$store.state.isLogin = true
-        }else if(res.data === 'wrong password'){
+          this.$store.state.currentUser = values.username
+          sessionStorage.setItem("userName",values.username)
+          sessionStorage.setItem("userToken",res.data.token)
+          that.changeLogin({token:res.data.token})
+        }else if(res.data.message === 'wrong password'){
           console.log('密码错误')
           this.$toast.fail('密码错误，请重新输入');
-        }
+          sessionStorage.clear()
+        }else if (res.data.message === 'no user'){
+          console.log('无此用户')
+          this.$toast.fail('账号不存在！');
+          sessionStorage.clear()
+        }     
+        console.log(res)
       }).catch(err => {
         console.log(err)
-        console.log('请重新输入')
-        this.$toast.fail('账号不存在！');
-
+        sessionStorage.clear()
       })
     },
     change() {
-      this.showLogin = true
+      let that = this
+      if(this.$store.state.token){
+        request({
+          url:'/autologin',
+          method:'post',
+          headers:{'token':sessionStorage.getItem("userToken")}
+        }).then(res => {
+          console.log(res.data)
+          that.autoTran({userData:res.data})
+          
+        })
+      }else{
+        this.showLogin = true
+      }
+      
     },
     publish() {
       console.log('开始发表树洞')
