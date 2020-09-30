@@ -105,7 +105,8 @@ export default {
         url:'/publish',
         method:'POST',
         data:{
-          content:values.content
+          content:values.content,
+          username:this.$store.state.currentUser
         },
         
       }).then(res => {

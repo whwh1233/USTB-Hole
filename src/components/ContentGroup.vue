@@ -82,15 +82,15 @@ export default {
     showDetail(message) {
       console.log('展示' +  message.id + '细节'),
       this.isShow = true,
-      this.$store.state.messageDetail = message
+      this.$store.commit('changeMessage',message)
       console.log(this.$store.state.messageDetail),
-      console.log('访问' +  message.topic_id + '评论数据库')
-      const req_url = '/reply/' + message.topic_id
+      console.log('访问' +  message.id + '评论数据库')
+      const req_url = '/reply/' + message.id
       request({
         url:req_url
       }).then(res => {
         console.log(res.data)
-        this.$store.state.replyDetail = res.data
+        this.$store.commit('changeReply',res.data)
       }).catch(err =>
         console.log(err)
       )

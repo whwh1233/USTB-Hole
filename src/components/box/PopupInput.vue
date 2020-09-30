@@ -1,24 +1,70 @@
 <template>
   <div>
     <div class="input-group">
-            <input type="text" class="input-self" placeholder="请输入你想要的发表的留言">
-            <button class="input-button">
-              <img src="~@/static/img/send.png" alt="">
-            </button>
+      <van-form @submit="onSubmit">
+        <van-field
+          v-model="reply"
+          rows="3"
+          autosize
+          label="留言"
+          type="textarea"
+          maxlength="250"
+          placeholder="请输入留言"
+          show-word-limit
+        />
+        <div style="margin: 0.16rem;">
+          <van-button round block type="info" native-type="submit">
+            发表评论
+          </van-button>
         </div>
+      </van-form>
+    </div>
   </div>
 </template>
 
 <script>
+import { request } from '@/network/request';
 export default {
-  
+  data() {
+    return {
+      reply:''
+    }
+  },
+  methods:{
+    onSubmit() {
+      console.log('按钮被点击')
+      console.log(this.reply)
+      console.log(this.$store.state.messageDetail.id)
+      const values = {
+        reply:this.reply,
+        topic_id:this.$store.state.messageDetail.id,
+        username:this.$store.state.currentUser
+      }
+      console.log(values)
+      request({
+        url:'/discuss',
+        method:"POST",
+        data:{
+          values:values
+        }
+      }).then(res => {
+        console.log(res.data)
+        if(res.data === 'reply success'){
+          this.$toast.success('回复成功 请刷新');
+        }
+        else{
+          this.$toast.fail('回复失败 请重试！');
+        }
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
 .input-group{
   width:90%;
-  height: 1rem;
+  height: fit-content;
   background-color:lightyellow;
   margin: 0.2rem auto;
   box-shadow: 0 0.02rem 0.05rem rgba(0,0,0,.4);

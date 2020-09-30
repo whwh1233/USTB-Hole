@@ -22,8 +22,15 @@ export default new Vuex.Store({
     autoTran(state,userData) {
       state.isLogin = true
       state.currentUser = userData.userData.username
-      
+    },
+    changeMessage(state,message) {
+      state.messageDetail = message
+
+    },
+    changeReply(state,reply) {
+      state.replyDetail = reply
     }
+
   },
   
 })
