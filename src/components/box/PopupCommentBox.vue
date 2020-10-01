@@ -1,7 +1,7 @@
 <template>
   <div class="popup-comment-box">
-    <reply-header :message="message" :index="index"></reply-header>
-    <reply-content :message="message"></reply-content>
+    <reply-header :index="index" :message="message"></reply-header>
+    <reply-content  :index="index" :message="message"></reply-content>
   </div>
 </template>
 

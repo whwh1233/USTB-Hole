@@ -1,17 +1,35 @@
 <template>
-  <div class="box">
+  <div class="box-group">
+    <div class="box">
     <box-header :message="message"></box-header>
     <box-content :message="message"></box-content>
+    </div>
   </div>
 </template>
 
 <script>
 import BoxHeader from './comp/BoxHeader'
 import BoxContent from './comp/BoxContent'
+
+
+
 export default {
   components:{
     BoxHeader,
-    BoxContent
+    BoxContent,
+    
+  },
+  created() {
+    console.log(this.message)
+  },
+  mounted() {
+    
+    
+  },
+  data() {
+    return {
+      
+    }
   },
   methods:{
     change() {
@@ -34,6 +52,23 @@ export default {
   border-radius: 0.05rem;
   box-shadow: 0 0.02rem 0.05rem rgba(0,0,0,.4);
   overflow: hidden;
+}
+.box-group{
+  display: flex;
+}
+.wrapper{
+  margin-top: 0.3rem;
+  background: rosybrown;
+  width: 600px;
+}
+.reply-group{
+  border-radius: 0.05rem;
+  box-shadow: 0 0.02rem 0.05rem rgba(0,0,0,.4);
+  
+  white-space: nowrap;
+}
+.reply-item{
+  display: inline-block;
 }
 
 
