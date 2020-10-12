@@ -3,18 +3,9 @@
     <ul>
       <li v-for="(message,index) in content" :key="index" class="wrapper-box">
         <box :message="message" @click.native="showDetail(message)"></box>
-        <reply-scroll></reply-scroll>
+        <reply-scroll :index="index" :id="message.id"></reply-scroll>
       </li>
     </ul>
-    <div class="wrapper"  ref="scroll">
-          <ul class="scroll-content">
-            <li v-for="(reply,index) in replys" :key="index">
-              <div class="reply-item">
-                {{reply.id + reply.content}}
-              </div>
-            </li>
-          </ul>
-        </div>
     <van-popup v-model="isShow" position="right" :style="{height:'100%',width:'60%',opacity:0.8}" >
       <div class="popup">
         <popup-title></popup-title>
@@ -30,18 +21,22 @@
         <popup-input></popup-input>
       </div>
     </van-popup>
+    <div class="wholebox">
+      <whole-box :isIndex="true" :isPopup="false" :isReply="false"></whole-box>
+    </div>
   </div>
 </template>
 
 <script>
 import Box from './box/Box'
-import PopupBox from './box/PopupBox'
+import PopupBox from './popupbox/PopupBox'
 import PopupTitle from './box/PopupTitle'
 import PopupIcon from './box/PopupIcon'
 import PopupInput from './box/PopupInput'
-import PopupCommentBox from './box/PopupCommentBox'
+import PopupCommentBox from './popupcommentbox/PopupCommentBox'
 import ReplyScroll from '././box/ReplyScroll'
 import BScroll from '@better-scroll/core'
+import WholeBox from './WholeBox'
 
 
 import { mapMutations } from 'vuex'
@@ -55,21 +50,22 @@ export default {
     PopupTitle,
     PopupIcon,
     PopupInput,
-    ReplyScroll
+    ReplyScroll,
+    WholeBox
   },
   created() {
-      console.log('内容组件创建完成')
+      // console.log('内容组件创建完成')
       request({
         url:'/content'
       }).then(res => {
-        this.content = res.data,
-        console.log(res.data)
+        this.content = res.data
+        // console.log(res.data)
       }).catch(err => 
         console.log(err)
       )
   },
   mounted() {
-    console.log('mounted成功')
+    // console.log('mounted成功')
     let that = this
     if(this.$store.state.token){
       request({
@@ -92,18 +88,12 @@ export default {
     return {
       isShow:false,
       content:[],
-      replys:[{id:1,content:'yse'},
-      {id:2,content:'yse'},{id:4,content:'yse'},{id:65,content:'yse'},{id:6,content:'yse'},{id:8,content:'yse'},{id:8,content:'yse'},
-      ]
+      
     }
   },
   methods:{
     init() {
-      let bs = new BScroll('.wrapper', {
-        pullUpLoad: true,
-        wheel: true,
-        scrollbar: true,
-      })
+      
     },
     showDetail(message) {
       console.log('展示' +  message.id + '细节'),
@@ -131,8 +121,8 @@ export default {
 }
 .wrapper{
   margin-top: 0.3rem;
-  width: 6rem;
-  height: 150px;
+  width: 600px;
+  height: 60px;
   margin-left: 0.5rem;
   background-color: yellow;
   border-radius: 0.05rem;
@@ -141,11 +131,12 @@ export default {
 }
 
 .scroll-content {
-  
-  overflow: hidden;
+  width: 800px;
+  white-space: nowrap;
 }
-.reply-item{
-  width:100px;
+.reply-li {
+  display: inline-block;
+  width:80px;
   background-color: grey;
   margin: 20px;
 }

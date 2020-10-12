@@ -1,5 +1,5 @@
 <template>
-  <div class="box-group">
+  <div >
     <div class="box">
     <box-header :message="message"></box-header>
     <box-content :message="message"></box-content>
@@ -20,7 +20,7 @@ export default {
     
   },
   created() {
-    console.log(this.message)
+    // console.log(this.message)
   },
   mounted() {
     

@@ -6,12 +6,10 @@
 </template>
 
 <script>
-import CommentHeader from './comp/CommentHeader'
 import ReplyHeader from './comp/ReplyHeader'
 import ReplyContent from './comp/ReplyContent'
 export default {
   components:{
-    CommentHeader,
     ReplyHeader,
     ReplyContent,
   },
