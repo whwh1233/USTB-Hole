@@ -38,9 +38,7 @@ export default {
   },
   data() {
     return {
-      replys:[{id:1,content:'yse'},
-      {id:2,content:'yse'},{id:4,content:'yse'},{id:65,content:'yse'},{id:6,content:'yse'},{id:8,content:'yse'},{id:8,content:'yse'},
-      ],
+      
       comments:[]
     }
   },
@@ -57,16 +55,17 @@ export default {
       )
 
   },
-  mounted() {
-    const name = '.wrapper' + this.index 
-    let bs = new BScroll(name, {
-        pullUpLoad: true,
-        wheel: true,
-        scrollbar: true,
-        scrollX:true,
-        scrollY:false
-    })
-  }
+  // mounted() {
+  //   const name = '.wrapper' + this.index 
+  //   let bs = new BScroll(name, {
+  //       pullUpLoad: true,
+  //       wheel: true,
+  //       scrollbar: true,
+  //       scrollX:true,
+  //       scrollY:false,
+  //       startX:-800,
+  //   })
+  // }
 }
 </script>
 
@@ -82,17 +81,18 @@ export default {
 }
 
 .scroll-content {
-  width: 1900px;
+  /* width: 1900px; */
   overflow: hidden;
   white-space: nowrap;
 }
 .reply-li{
-
-  display: inline-block;
+  float: left;
+ 
   margin-left: -0.05rem;
 }
 .reply-item{
-  width: fit-content;
+  /* width: fit-content; */
+  width: 3rem;
   margin: 0;
   background-color: lightyellow;
   border-radius: 0.05rem;
